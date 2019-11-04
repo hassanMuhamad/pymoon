@@ -34,7 +34,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    description="Pymoon is bunch of module that facilitate dealing with files.",
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
