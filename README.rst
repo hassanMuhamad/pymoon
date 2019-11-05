@@ -16,7 +16,7 @@ pymoon
 
 
 
-Python Boilerplate contains all the boilerplate you need to create a Python package.
+Python package contains multiple method to handle files and directories.
 
 
 * Free software: MIT license
@@ -27,6 +27,10 @@ Features
 --------
 
 * TODO
+
+* Search for text in a file or across multiple files
+* Create, update, move, and rename files and folders (In progress)
+* Search the Web and download online content
 
 Credits
 -------
