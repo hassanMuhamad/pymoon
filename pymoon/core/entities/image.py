@@ -3,3 +3,5 @@
 #   @entry: file Object
 #   implementation: >> algorithms/observer module
 
+class Image():
+    pass
