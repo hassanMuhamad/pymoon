@@ -16,7 +16,7 @@ pymoon
 
 
 
-Python Boilerplate contains all the boilerplate you need to create a Python package.
+Python package contains multiple method to handle files and directories.
 
 
 * Free software: MIT license
