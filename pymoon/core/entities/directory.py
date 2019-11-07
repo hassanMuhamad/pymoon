@@ -7,11 +7,17 @@ class Directory():
         self.path = path
 
     def list_contents(self):
-        ''' listing the sub-files and sub-directories '''
+        ''' listing sub-files and sub-directories '''
         return os.listdir(self.path)
 
+    def list_dirs(self):
+        ''' listing sub-directories '''
+        dir_content = self.list_contents()
+        only_dirs = filter(os.path.isdir, dir_content)
+        return only_dirs
+
     def list_files(self):
-        ''' listing the sub-files '''
+        ''' listing sub-files '''
         listed_files = []
         for files in os.listdir(self.path):
             if os.path.isfile(files):
@@ -64,4 +70,5 @@ class Directory():
     # End of class
 
 if __name__ == "__main__":
-    pass
+    dir = Directory(os.getcwd())
+    print(dir.list_dirs())
