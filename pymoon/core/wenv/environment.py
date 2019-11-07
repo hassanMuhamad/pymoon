@@ -5,6 +5,7 @@ import os
 class Environment():
     ''' a bunch of working environement '''
     def __init__(self):
+        #extracting path from the current user
         self.OS_LANGUAGE = os.getenv('LANG') # en_US.UTF-8
         self.CURRENT_USER_HOME_DIR = os.path.expanduser("~")
         self.CURRENT_USER_DESKTOP = os.path.expanduser("~") + r'\Desktop'
