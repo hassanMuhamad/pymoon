@@ -11,7 +11,7 @@ pymoon
 
 
 
-Python package contains multiple method to handle files and directories.
+Python package contains multiple methods to handle files and directories.
 
 
 * Free software: MIT license
