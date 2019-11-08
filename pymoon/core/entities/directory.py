@@ -1,23 +1,33 @@
-import os
+import os, shutil
 
 class Directory():
-    ''' # Directory class '''
+
+    ''' A representation of a folder as an Object associated to methods for its content handling '''
+
     def __init__(self, path):
-        ''' Class Constructor '''
+        ''' Directory Class Constructor'''
+        # Parameter:
+        # (1) path: the associated system path
         self.path = path
 
     def list_contents(self):
         ''' listing sub-files and sub-directories '''
+        # Return:
+        # List contains name of all element under the associated path to the current object
         return os.listdir(self.path)
 
     def list_dirs(self):
         ''' listing sub-directories '''
+        # Return:
+        # List contains sub-directories names
         dir_content = self.list_contents()
         only_dirs = filter(os.path.isdir, dir_content)
         return only_dirs
 
     def list_files(self):
         ''' listing sub-files '''
+        # Return:
+        # List contains files names
         listed_files = []
         for files in os.listdir(self.path):
             if os.path.isfile(files):
@@ -26,16 +36,18 @@ class Directory():
 
     def search_by_name(self, name, FLAG=0):
         ''' a seach method '''
-        # @param :: name >> the name to search
-        # @param :: FLAG >> decide the search target (either 0 for a file or 1 for a directory)
-        # return Boolean
-        if (FLAG == 0): # (FILE)
+        # Parameters:
+        # (1) name: the name of the directory/file to search
+        # (2) FLAG: either 1 (for files) or 0 (for directories)
+        # Return:
+        # Boolean (True if found, False if not)
+        if (FLAG == 0): # Handling the file case
             for files in os.listdir(self.path):
                 if os.path.isfile(files):
                     current_name, _ = os.path.splitext(files)
                     if current_name == name:
                         return True
-        elif (FLAG == 1): # (FOLDER)
+        elif (FLAG == 1): # handling the directory case
             for files in os.listdir(self.path):
                 if os.path.isdir(files):
                     if files == name:
@@ -44,8 +56,10 @@ class Directory():
 
     def search_by_extension(self, extension):
         ''' files searching method '''
-        # @param :: extension >> files extension
-        # returns >> a list for files with the given extension
+        # Parameters:
+        # (1) extension: the extension associated to files
+        # Return:
+        # List (contains the files names)
         listed_files = []
         for files in os.listdir(self.path):
             if os.path.isfile(os.path.join(self.path, files)):
@@ -56,19 +70,37 @@ class Directory():
 
     def create_subfolder(self, folder_name):
         ''' a method that create a sub-folder under directory path '''
-        # @param :: folder name
+        # Parameters:
+        # (1) folder_name: the name of the new folder
         os.makedirs(self.path + '\\' + folder_name)
 
     def remove_file(self, file_name):
         ''' a method that remove an existing file '''
+        # Parameters:
+        # (1) file_name: the name of the file to delete
         os.remove(file_name)
 
-    def rename_file(self, file_name, new_name):
+    def rename_file(self, old_name, new_name):
         ''' a method that rename an existing file '''
-        os.rename(file_name, new_name)
+        # Parameters:
+        # (1) old_name: the current name of file
+        # (2) new_name: the new name of file
+        os.rename(old_name, new_name)
 
-    # End of class
+    def move(self, element_name, destination_path, FLAG=0):
+        ''' a method that move an element under the path field '''
+        # Parameters:
+        # (1) element_name: the name of the element to move
+        # (2) FLAG: either 1 (for files) or 0 (for directories)
+        # return:
+        # Integer (0 in case of no error, 1 if an error has found)
+        element_path = os.path.join(self.path, element_name)
+        try:
+            shutil.move(element_path, destination_path)
+        except print(0):
+            print('Error: Cannot move the element')
+
+# End of class
 
 if __name__ == "__main__":
-    dir = Directory(os.getcwd())
-    print(dir.list_dirs())
+    pass
