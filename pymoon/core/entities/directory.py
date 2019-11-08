@@ -68,6 +68,10 @@ class Directory():
                     listed_files.append(files)
         return listed_files
 
+    def get_dir_size(self):
+        ''' a method that return the directory size in bytes '''
+        return os.path.getsize(self.path)
+
     def create_subfolder(self, folder_name):
         ''' a method that create a sub-folder under directory path '''
         # Parameters:
@@ -101,6 +105,21 @@ class Directory():
             print('Error: Cannot move the element')
 
 # End of class
+
+def check_path(path):
+    if (os.path.exists(path)):
+        return True
+    return False
+
+def pathEndsWithAFile(path):
+    if (os.path.isfile(path)):
+        return True
+    return False
+
+def pathLeadsToDirectory(path):
+    if (os.path.isdir(path)):
+        return True
+    return False
 
 if __name__ == "__main__":
     pass
