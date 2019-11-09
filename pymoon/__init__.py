@@ -1,2 +1,1 @@
-from . import core
-from . import detectors
+from . import core, detectors
