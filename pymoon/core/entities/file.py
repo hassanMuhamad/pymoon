@@ -1,29 +1,36 @@
 # !TODO:
 #   A class that takes either the file or the file name and extract relevant informations from it
 #   implementation: >> algorithms/observer module
-import os
+import os, shutil
 
 class File():
+
     '''The abstruct representation of file'''
+
     def __init__(self, path=os.path.expanduser("~")):
+        ''' File Class Constructor'''
+        # Parameter:
+        # (1) path: the associated path to the file
         self.path = path
         self.name, self.extension = os.path.splitext(os.path.basename(path))
-        # !TODO: check the status of the file and affect it to the associated field
-        self.status = 0
+
 
     def get_file_path(self):
+        ''' GETTER METHOD '''
         return self.path
 
     def get_file_name(self):
+        ''' GETTER METHOD '''
         return self.name
 
     def get_file_extension(self):
+        ''' GETTER METHOD '''
         return self.extension
 
-    def get_file_status(self):
-        return self.status
-
     def change_file_name(self, new_file_name):
+        ''' Changes the file name '''
+        # Parameter:
+        # (1) new_file_name
         try:
             os.rename(self.path, new_file_name)
             self.name = new_file_name
@@ -31,35 +38,21 @@ class File():
             print('Error: Cannot rename the file')
 
     def change_file_extension(self, new_file_extension):
-        try:
-            # !TODO: checks if the extension is accepteable according to the original one.
-            pass
-        except:
-            print('Error: Cannot change the file extension')
+        # !TODO:
+        pass
 
     def move_file_to(self, new_path):
+        ''' Moves the file to a new location '''
+        # Parameter:
+        # (1) new_path: the new location
         try:
-            # !TODO: checks if the file isNotVirtual
+            shutil.move(self.path, new_path)
             pass
         except:
             print('Error: Cannot move the file')
 
-
-
-def main():
-    pass
+# End of class
 
 if __name__ == "__main__":
-    '''CONSOLE HANDLING'''
-    file = File('C:/Users/21655/Desktop/week1_calendar.png')
-    file_name = file.get_file_name()
-    file_extension = file.get_file_extension()
-    print(file.get_file_path())
-    print(file_name, file_extension)
-    print('--------------')
-    file.change_file_name('calendar.png')
-    file_name = file.get_file_name()
-    file_extension = file.get_file_extension()
-    print(file.get_file_path())
-    print(file_name, file_extension)
+    pass
 
