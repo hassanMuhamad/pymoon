@@ -10,4 +10,5 @@ Development Lead
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Mariem Ben Gamra <maryembengamra63@gmail.com>
+

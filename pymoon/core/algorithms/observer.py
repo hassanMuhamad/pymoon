@@ -2,10 +2,12 @@
 #   - method that check if the folder contains files
 #   - method that get information associated to a given file :: @param file
 #   output: JSON based object
-import os, shutil
+import os
 
 class Observer():
+
     ''' # # # '''
+
     def __init__(self, Directory_instance):
         self.target = Directory_instance
         self.scene = Directory_instance.path
@@ -24,23 +26,13 @@ class Observer():
         images_files = self.target.search_by_extension('.png')
         video_files = self.target.search_by_extension('.mp4')
         for files in text_files:
-            shutil.move(
-                os.path.join(self.scene, files),
-                os.path.join(self.scene, 'pymoon_texts')
-                )
+            self.target.move(files, os.path.join(self.scene, 'pymoon_texts'))
         for files in images_files:
-            shutil.move(
-                os.path.join(self.scene, files),
-                os.path.join(self.scene, 'pymoon_images')
-                )
+            self.target.move(files, os.path.join(self.scene, 'pymoon_images'))
         for files in video_files:
-            shutil.move(
-                os.path.join(self.scene, files),
-                os.path.join(self.scene, 'pymoon_videos')
-                )
+            self.target.move(files, os.path.join(self.scene, 'pymoon_videos'))
 
-    # End of class
-
+# End of class
 
 if __name__ == "__main__":
     pass
